@@ -1,5 +1,6 @@
 local Estados = require(script.Parent:WaitForChild("Estados"))
 local falar = require(script.Parent:WaitForChild("Chat"))
+local Movimento = require(script.Parent:WaitForChild("Movimento")) -- ✅ IMPORTANTE
 
 local TEMPO_VERIFICAR_PRESO = 3
 local DISTANCIA_MIN_MOVIMENTO = 2
@@ -59,7 +60,7 @@ end
 local function patrulhar(personagem, humanoid)
 	atualizarEstado(personagem, Estados.Patrulhando)
 	local destino = pontosPatrulha[indicePatrulha]
-	moverPara(destino, personagem, humanoid)
+	Movimento.moverPara(destino, personagem, humanoid) -- ✅ usa o mover com pathfinding
 
 	if (personagem.HumanoidRootPart.Position - destino).Magnitude < 10 then
 		indicePatrulha = (indicePatrulha % #pontosPatrulha) + 1
