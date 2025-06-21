@@ -3,15 +3,6 @@ local PathfindingService = game:GetService("PathfindingService")
 local Estados = require(script.Parent:WaitForChild("Estados"))
 local falar = require(script.Parent:WaitForChild("Chat"))
 
-local TEMPO_VERIFICAR_PRESO = 3
-local DISTANCIA_MIN_MOVIMENTO = 2
-local MAX_ATOLAMENTO = 3
-local INTERVALO_RECALCULO = 1.5
-
-local contadorAtolado = 0
-local ultimaPosicao = nil
-local ultimoRecalculo = 0
-
 local function moverPara(destino, personagem, humanoid)
 	local raiz = personagem:FindFirstChild("HumanoidRootPart")
 	if not raiz or not destino then return end
@@ -48,3 +39,7 @@ local function moverPara(destino, personagem, humanoid)
 		humanoid.Jump = true
 	end
 end
+
+return {
+	moverPara = moverPara
+}
